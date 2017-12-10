@@ -1,0 +1,54 @@
+<div class="container">
+  <div class="jumbotron">
+      <h3>Edit Workout Here</h3>
+  </div>
+
+  <div class="row">
+      <div class="col-sm-6">
+          <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title" style="color: black;">Add a cardio routine</h4>
+                  <form>
+                  <div class="form-group">
+                        <label for="cardio"  style="color: black;">Workout title</label>
+                        <input type="text" class="form-control" id="cardio" style="color: black;">
+                  </div>
+                  <div class="form-group">
+                        <label for="duration"  style="color: black;">Duration</label>
+                        <input type="number" class="form-control" id="duration" style="color: black;">
+                  </div>
+                  <button type="submit" id="submit-cardio" class="btn btn-primary" (click) = "outputCardio()">Add workout</button>
+                  </form>
+                </div>
+          </div>
+          <div class="card">
+                  <div class="card-body">
+                      <h4 class="card-title" style="color: black;">Add a weightlifting routine</h4>
+                      <form>
+                      <div class="form-group">
+                            <label for="lift"  style="color: black;">Workout title</label>
+                            <input type="text" class="form-control" id="lift" style="color: black;">
+                      </div>
+                      <div class="form-group">
+                            <label for="weight"  style="color: black;">Weight</label>
+                            <input type="number" class="form-control" id="weight" style="color: black;">
+                      </div>
+                      <div class="form-group">
+                            <label for="set"  style="color: black;">Set</label>
+                            <input type="number" class="form-control" id="set" style="color: black;">
+                          </div>
+                      <button type="submit" id="submit-lift" class="btn btn-primary" (click) = "outputLifts()">Add workout</button>
+                    </form>
+                  </div>
+              </div>
+      </div>
+      <div class="col-sm-6">
+          <div class="card">
+              <div class="card-body">
+                  <h4 class="card-title" >Completed Workouts</h4>
+                  <div class="card-body" id = "output"></div>
+              </div>
+          </div>
+      </div>
+  </div> 
+</div>
