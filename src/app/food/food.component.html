@@ -1,0 +1,30 @@
+
+<div class="container">
+  <div class="jumbotron">
+      <h3>Edit Today's Food Log</h3>
+  </div>
+
+  <div class="row">
+      <div class="col-sm-6">
+          <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title" style="color: black;">Add a food item</h4>
+                  <form>
+                  <div class="form-group">
+                        <input type="text" class="form-control" id="food" style="color: black;">
+                  </div>
+                  <button type="button" id="submit-food" class="btn btn-primary" (click) = "outputFood()">Add to food log</button>
+                  </form>
+                </div>
+          </div>
+      </div>
+      <div class="col-sm-6">
+          <div class="card">
+              <div class="card-body">
+                  <h4 class="card-title" >Today's Food</h4>
+                  <div class="card-body" id = "output-food"></div>
+              </div>
+          </div>
+        </div>
+      </div>
+  </div> 

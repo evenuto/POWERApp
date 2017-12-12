@@ -23,7 +23,7 @@ export class WorkoutTrackComponent implements OnInit {
             + (<HTMLInputElement>document.getElementById("duration")).value + " minutes" + "<br>");
         $("#output").append('<span>' + cardioArray[cardioArray.length - 1] + '</span>');
         (<HTMLInputElement>document.getElementById("cardio")).value = "";
-        (<HTMLInputElement>document.getElementById("cardio")).value = "";
+        (<HTMLInputElement>document.getElementById("duration")).value = "";
     }
   }
 
@@ -32,12 +32,25 @@ export class WorkoutTrackComponent implements OnInit {
 
       if((<HTMLInputElement>document.getElementById("lift")).value != "")
       {
-          liftArray.push((<HTMLInputElement>document.getElementById("lift")).value + " at " 
-              + (<HTMLInputElement>document.getElementById("weight")).value + " for " +  (<HTMLInputElement>document.getElementById("set")).value + "<br>");
+        if ((<HTMLInputElement>document.getElementById('kg')).checked == true) {
+            var selected = (<HTMLInputElement>document.getElementById('kg')).value;
+          }
+        else if ((<HTMLInputElement>document.getElementById('lb')).checked == true) {
+            var selected = (<HTMLInputElement>document.getElementById('lb')).value;
+        }
+          
+        liftArray.push((<HTMLInputElement>document.getElementById("lift")).value + " " 
+              + (<HTMLInputElement>document.getElementById("weight")).value
+              + selected + " "
+              + (<HTMLInputElement>document.getElementById("set")).value + "x" +
+              +  (<HTMLInputElement>document.getElementById("repetition")).value + "<br>");
           $("#output").append('<span>' + liftArray[liftArray.length - 1] + '</span>');
           (<HTMLInputElement>document.getElementById("lift")).value = "";
           (<HTMLInputElement>document.getElementById("weight")).value = "";
+          (<HTMLInputElement>document.getElementById("kg")).checked = false;
+          (<HTMLInputElement>document.getElementById("lb")).checked = false;
           (<HTMLInputElement>document.getElementById("set")).value = "";
+          (<HTMLInputElement>document.getElementById("repetition")).value = "";
 
       }
   }

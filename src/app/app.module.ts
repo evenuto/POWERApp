@@ -10,6 +10,7 @@ import { IndexComponent } from './index/index.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { WorkoutTrackComponent } from './workout-track/workout-track.component';
+import { FoodComponent } from './food/food.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { WorkoutTrackComponent } from './workout-track/workout-track.component';
     LoginComponent,
     SignupComponent,
     WorkoutTrackComponent,
+    FoodComponent,
     
   ],
   imports: [
@@ -29,6 +31,7 @@ import { WorkoutTrackComponent } from './workout-track/workout-track.component';
       { path: "login", component: LoginComponent },
       { path: "signup", component: SignupComponent },
       { path: "workout-track", component: WorkoutTrackComponent },
+      { path: "food", component: FoodComponent },
       { path: "", pathMatch: "full", redirectTo: "/home" }
     ])
   ],
