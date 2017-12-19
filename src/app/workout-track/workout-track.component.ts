@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Http } from "@angular/http";
+import { Session, User } from '../models/user';
+import { LoginService } from '../models/login.service';
+import { Router } from '@angular/router';
 declare var jquery:any;
 declare var $ :any;
 
@@ -9,11 +13,10 @@ declare var $ :any;
 })
 export class WorkoutTrackComponent implements OnInit {
 
-  constructor() { }
+   constructor() { }
 
   ngOnInit() {
   }
-
   outputCardio(){
     const cardioArray = new Array();
 
@@ -53,6 +56,40 @@ export class WorkoutTrackComponent implements OnInit {
           (<HTMLInputElement>document.getElementById("repetition")).value = "";
 
       }
+  } 
+//   submitProgress(){
+//     this.loginservice.submitProgress(this.list.myArray.toString());
+//   }
+/*
+  session = new Session();
+  me: User;
+
+  
+  constructor(private http: Http, public login: LoginService, private router: Router) { }
+
+  ngOnInit() {
+      if(this.login.me == null){
+          this.router.navigate(['/login']);
+      }
+      this.me = this.login.me;
+      setInterval(()=> this.update(), 1000)
   }
+
+  update(){
+      this.http.get(this.login.apiRoot + "/user/session").subscribe( data =>{
+          this.session = data.json();
+      });
+  }
+
+  
+   submitQuote(e: MouseEvent, i: number){
+      e.preventDefault();
+      const data = { text: quote.text, user: this.me.name };
+      this.http.post(this.login.apiRoot + "/user/sessiongame/room/quotes", data).subscribe(res=>{
+          this.me.quotes.splice(i, 1);
+          this.me.quotes.push( res.json() );            
+      })
+  } */
+
 
 }

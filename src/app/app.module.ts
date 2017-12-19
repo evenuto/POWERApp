@@ -1,7 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from "@angular/router";
-
+import { HttpModule } from "@angular/http";
+import { HttpClientModule} from "@angular/common/http";
+import { FormsModule } from "@angular/forms";
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -11,6 +13,8 @@ import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { WorkoutTrackComponent } from './workout-track/workout-track.component';
 import { FoodComponent } from './food/food.component';
+import { LoginService } from './models/login.service';
+
 
 @NgModule({
   declarations: [
@@ -26,6 +30,9 @@ import { FoodComponent } from './food/food.component';
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    HttpModule,
+    HttpClientModule,
     RouterModule.forRoot([
       { path: "home", component: IndexComponent },
       { path: "login", component: LoginComponent },
@@ -35,7 +42,7 @@ import { FoodComponent } from './food/food.component';
       { path: "", pathMatch: "full", redirectTo: "/home" }
     ])
   ],
-  providers: [],
+  providers: [ LoginService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
