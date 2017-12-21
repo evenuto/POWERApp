@@ -10,7 +10,6 @@ import { HeaderComponent } from './header/header.component';
 import { NavComponent } from './nav/nav.component';
 import { IndexComponent } from './index/index.component';
 import { LoginComponent } from './login/login.component';
-import { SignupComponent } from './signup/signup.component';
 import { WorkoutTrackComponent } from './workout-track/workout-track.component';
 import { FoodComponent } from './food/food.component';
 import { LoginService } from './models/login.service';
@@ -23,7 +22,6 @@ import { LoginService } from './models/login.service';
     NavComponent,
     IndexComponent,
     LoginComponent,
-    SignupComponent,
     WorkoutTrackComponent,
     FoodComponent,
     
@@ -36,7 +34,6 @@ import { LoginService } from './models/login.service';
     RouterModule.forRoot([
       { path: "home", component: IndexComponent },
       { path: "login", component: LoginComponent },
-      { path: "signup", component: SignupComponent },
       { path: "workout-track", component: WorkoutTrackComponent },
       { path: "food", component: FoodComponent },
       { path: "", pathMatch: "full", redirectTo: "/home" }

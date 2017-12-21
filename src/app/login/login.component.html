@@ -5,17 +5,17 @@
                 <div class="form-group row">
                     <label for="name" class="col-sm-2 col-form-label" style="color: black;" >Name</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="name" style="color: black;" placeholder="Name" [(ngModel)]="name">
+                        <input type="text" class="form-control" style="color: black;" placeholder="Name" id="name">
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="pwd" class="col-sm-2 col-form-label" style="color: black;">Password:</label>
+                    <label for="password" class="col-sm-2 col-form-label" style="color: black;">Password:</label>
                     <div class="col-sm-10">
-                        <input type="password" class="form-control" id="pwd" style="color: black;" placeholder="Password" [(ngModel)]="password">
+                        <input type="password" class="form-control" id="password" style="color: black;" placeholder="Password" id="password">
                     </div>
                 </div>
-                <a class="btn btn-primary"  (click)="login()">Log in</a>
-                <a class="btn btn-primary"  (click)="loginFB()">Log in with Facebook</a>
+                <a class="btn btn-primary" (click)="login(name,password)">Login</a>
+                <!-- <a class="btn btn-primary"  (click)="loginFB()">Log in with Facebook</a> -->
             </div>
         </div>
     </div>

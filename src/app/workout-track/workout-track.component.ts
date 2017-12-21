@@ -1,23 +1,31 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Http } from "@angular/http";
-import { Session, User } from '../models/user';
-import { LoginService } from '../models/login.service';
 import { Router } from '@angular/router';
+import { User } from '../models/user';
+import { LoginService } from '../models/login.service'
+
 declare var jquery:any;
 declare var $ :any;
+
 
 @Component({
   selector: 'app-workout-track',
   templateUrl: './workout-track.component.html',
-  styleUrls: ['./workout-track.component.css']
+  styleUrls: ['./workout-track.component.css'],
+encapsulation: ViewEncapsulation.None
 })
-export class WorkoutTrackComponent implements OnInit {
+export class WorkoutTrackComponent implements OnInit {  
 
-   constructor() { }
-
+  constructor(private http: Http, private router: Router, private userLogin: LoginService){ }
+  me: User;
   ngOnInit() {
+    // if (this.userLogin.me == null) {
+    //   this.router.navigate(["/login"]);
+    // }
+    this.me = this.userLogin.me;
   }
-  outputCardio(){
+
+   outputCardio(){
     const cardioArray = new Array();
 
     if((<HTMLInputElement>document.getElementById("cardio")).value != "")
@@ -28,9 +36,42 @@ export class WorkoutTrackComponent implements OnInit {
         (<HTMLInputElement>document.getElementById("cardio")).value = "";
         (<HTMLInputElement>document.getElementById("duration")).value = "";
     }
-  }
 
-  outputLifts(){
+  //  this.me.exerciseArray.push(cardioArray[cardioArray.length-1]);
+  }  
+
+   /* outputCardio(){
+    if((<HTMLInputElement>document.getElementById("cardio")).value != ""){
+
+    this.me.exerciseArray.push((<HTMLInputElement>document.getElementById("cardio")).value + " for " 
+    + (<HTMLInputElement>document.getElementById("duration")).value + " minutes");
+    $("#output").append('<span>' + this.me.exerciseArray[this.me.exerciseArray.length - 1] + '</span>');
+    (<HTMLInputElement>document.getElementById("cardio")).value = null;
+    (<HTMLInputElement>document.getElementById("duration")).value = null;
+
+   }
+  } 
+ */
+  /*  outputLifts(){
+    if((<HTMLInputElement>document.getElementById("lift")).value != "")
+    {
+    this.me.exerciseArray.push((<HTMLInputElement>document.getElementById("lift")).value + " " 
+    + (<HTMLInputElement>document.getElementById("weight")).value
+     + " "
+    + (<HTMLInputElement>document.getElementById("set")).value + "x" +
+    +  (<HTMLInputElement>document.getElementById("repetition")).value);
+    $("#output").append('<span>' + this.me.exerciseArray[this.me.exerciseArray.length - 1] + '</span>');$("#output").append('<span>' + this.me.exerciseArray[this.me.exerciseArray.length - 1] + '</span>');
+        (<HTMLInputElement>document.getElementById("lift")).value = null;
+        (<HTMLInputElement>document.getElementById("weight")).value = null;
+        (<HTMLInputElement>document.getElementById("kg")).checked = false;
+        (<HTMLInputElement>document.getElementById("lb")).checked = false;
+        (<HTMLInputElement>document.getElementById("set")).value = null;
+        (<HTMLInputElement>document.getElementById("repetition")).value = null;
+   }
+    } */
+
+
+   outputLifts(){
       const liftArray = new Array();
 
       if((<HTMLInputElement>document.getElementById("lift")).value != "")
@@ -47,6 +88,9 @@ export class WorkoutTrackComponent implements OnInit {
               + selected + " "
               + (<HTMLInputElement>document.getElementById("set")).value + "x" +
               +  (<HTMLInputElement>document.getElementById("repetition")).value + "<br>");
+
+        
+              
           $("#output").append('<span>' + liftArray[liftArray.length - 1] + '</span>');
           (<HTMLInputElement>document.getElementById("lift")).value = "";
           (<HTMLInputElement>document.getElementById("weight")).value = "";
@@ -57,39 +101,4 @@ export class WorkoutTrackComponent implements OnInit {
 
       }
   } 
-//   submitProgress(){
-//     this.loginservice.submitProgress(this.list.myArray.toString());
-//   }
-/*
-  session = new Session();
-  me: User;
-
-  
-  constructor(private http: Http, public login: LoginService, private router: Router) { }
-
-  ngOnInit() {
-      if(this.login.me == null){
-          this.router.navigate(['/login']);
-      }
-      this.me = this.login.me;
-      setInterval(()=> this.update(), 1000)
-  }
-
-  update(){
-      this.http.get(this.login.apiRoot + "/user/session").subscribe( data =>{
-          this.session = data.json();
-      });
-  }
-
-  
-   submitQuote(e: MouseEvent, i: number){
-      e.preventDefault();
-      const data = { text: quote.text, user: this.me.name };
-      this.http.post(this.login.apiRoot + "/user/sessiongame/room/quotes", data).subscribe(res=>{
-          this.me.quotes.splice(i, 1);
-          this.me.quotes.push( res.json() );            
-      })
-  } */
-
-
 }

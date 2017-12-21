@@ -1,9 +1,8 @@
 import { Injectable } from "@angular/core";
 import { Http } from "@angular/http";
 import { Router } from "@angular/router";
-import { User, Progress } from "./user";
+import { User } from "./user";
 import { json } from 'body-parser';
-
 
 declare var window: any;
 declare var FB: any;
@@ -13,12 +12,12 @@ export class LoginService {
 
   apiRoot: string;
   me: User;
-  loggedIn: boolean;
-  progress: Progress;
 
-  constructor(private http: Http, private router: Router) {
+  constructor(private http: Http,private router: Router) {
     this.apiRoot = `//${window.location.hostname}:8081`; 
-    window.fbAsyncInit = function () {
+  }
+
+   /*  window.fbAsyncInit = function () {
       FB.init({
         appId: "1853139358309932",
         cookie: true,
@@ -41,7 +40,7 @@ export class LoginService {
     })(document, "script", "facebook-jssdk");
   }
 
-  loginFB() {
+ loginFB() {
     FB.login(
       (response: any) => {
         if (response.authResponse) {
@@ -62,35 +61,27 @@ export class LoginService {
       },
       { scopes: "email,user_photos,user_posts" }
     );
-  }
+  }  */
 
   login(name: string, password: string, fbid?: string, picture?: string) {
-    this.http.post(this.apiRoot + "/user/session/users", { name, password, fbid, picture }).subscribe(
-      data => {
+    let exerciseArray: String[];
+    this.http
+    .post(this.apiRoot + "/userLogin/session/users", { 
+      name, 
+      password, 
+      })
+      .subscribe(
+        data => {
           this.me = data.json();
-          this.router.navigate(['/workout-track']);
-          this.loggedIn = true;
-      },
-      err => {
+          this.http.get(this.apiRoot + "/userLogin/exerciseArry").subscribe(data => {
+            this.me.exerciseArray = data.json();
+          });
+          console.log(data);
+        },
+        err => {
           console.log(err);
-          this.loggedIn = false;
-      },
-      () => {}
-  )
+        },
+        () => { }
+        );
+    }
   }
-
-  submitProgress(list: String){
-    console.log(list);
-    this.http.post(this.apiRoot + "/user/progress/progressarray", { list }).subscribe(
-      data => {
-          console.log('Success Track');
-          this.progress = data.json();
-          console.log(this.progress);
-      },
-      err => {
-          console.log(err);
-      }),
-      () => {}
-  }
-  
-}

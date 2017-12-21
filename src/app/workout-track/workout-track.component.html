@@ -11,7 +11,7 @@
                   <h4 class="card-title" style="color: black;">Add a cardio routine</h4>
                   <form>
                   <div class="form-group">
-                        <label for="cardio"  style="color: black;">Workout title</label>
+                        <label for="cardio" style="color: black;">Workout title</label>
                         <input type="text" class="form-control" id="cardio" style="color: black;">
                   </div>
                   <div class="form-group">
@@ -19,7 +19,8 @@
                         <input type="number" class="form-control" id="duration" style="color: black;">
                   </div>
                   <button type="button" id="submit-cardio" class="btn btn-primary" (click) = "outputCardio()">Add workout</button>
-                  </form>
+                 <!-- <a (click)="outputCardio()" id="submit-cardio" class="btn btn-primary">Add workout</a> -->
+                 </form>
                 </div>
           </div>
           <div class="card">
@@ -53,19 +54,18 @@
                         <input type="number" class="form-control" id="repetition" style="color: black;">
                       </div>
                       <button type="button" id="submit-lift" class="btn btn-primary" (click) = "outputLifts()">Add workout</button>
+                      <!-- <a (click)="outputLift(lift, weight, set, repetition)" id="submit-lift" class="btn btn-primary">Add workout</a>      -->
                     </form>
                   </div>
               </div>
-      </div>
-      <div class="col-sm-6">
-          <div class="card">
-              <div class="card-body">
-                  <h4 class="card-title" >Completed Workouts</h4>
-                  <div class="card-body" id = "output"></div>
-                  <a routerLink = "" class="btn btn-primary" (click) = "submitProgress()">Submit workout</a>
-                  
-              </div>
-          </div>
+            </div>
+              <div class="col-sm-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title" >Completed Workouts</h4>
+                        <div class="card-body" id = "output"></div>
+                    </div>
+                </div>
+            </div>
       </div>
   </div> 
-</div>
