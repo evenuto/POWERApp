@@ -31,6 +31,10 @@ export class LoginComponent implements OnInit {
       private share: LoginService
     ) {}
   
+    // getUser(){
+    //   return this.me;
+    // }
+
     // loginFB() {
     //   this.share.loginFB();
     // }

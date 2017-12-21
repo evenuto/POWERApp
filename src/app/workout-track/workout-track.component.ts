@@ -1,12 +1,16 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, NgModule } from '@angular/core';
 import { Http } from "@angular/http";
 import { Router } from '@angular/router';
 import { User } from '../models/user';
-import { LoginService } from '../models/login.service'
+import { LoginService } from '../models/login.service';
+import { LoginComponent } from '../login/login.component';
 
 declare var jquery:any;
 declare var $ :any;
 
+@NgModule({
+  declarations: [ LoginComponent ]
+})
 
 @Component({
   selector: 'app-workout-track',
@@ -22,7 +26,8 @@ export class WorkoutTrackComponent implements OnInit {
     // if (this.userLogin.me == null) {
     //   this.router.navigate(["/login"]);
     // }
-    this.me = this.userLogin.me;
+     this.me = this.userLogin.me;
+    // this.me = LoginComponent.getUser();
   }
 
    outputCardio(){
@@ -37,7 +42,7 @@ export class WorkoutTrackComponent implements OnInit {
         (<HTMLInputElement>document.getElementById("duration")).value = "";
     }
 
-  //  this.me.exerciseArray.push(cardioArray[cardioArray.length-1]);
+   this.me.exerciseArray.push(cardioArray[cardioArray.length-1]);
   }  
 
    /* outputCardio(){

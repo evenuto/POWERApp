@@ -4,7 +4,7 @@ import { RouterModule } from "@angular/router";
 import { HttpModule } from "@angular/http";
 import { HttpClientModule} from "@angular/common/http";
 import { FormsModule } from "@angular/forms";
-
+import { NgxTypeaheadModule } from 'ngx-typeahead';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { NavComponent } from './nav/nav.component';
@@ -23,13 +23,14 @@ import { LoginService } from './models/login.service';
     IndexComponent,
     LoginComponent,
     WorkoutTrackComponent,
-    FoodComponent,
+    FoodComponent
     
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
+    NgxTypeaheadModule,
     HttpClientModule,
     RouterModule.forRoot([
       { path: "home", component: IndexComponent },
@@ -42,4 +43,6 @@ import { LoginService } from './models/login.service';
   providers: [ LoginService ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+
+ }

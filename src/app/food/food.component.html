@@ -10,9 +10,12 @@
                 <div class="card-body">
                   <h4 class="card-title" style="color: black;">Add a food item</h4>
                   <form>
-                  <div class="form-group">
+                  <!-- <div class="form-group">
                         <input type="text" class="form-control" id="food" style="color: black;">
-                  </div>
+                  </div> -->
+                  <div id="the-basics">
+                        <input class="typeahead form-control" id="food" type="text" placeholder="Food Item" >
+                      </div>
                   <button type="button" id="submit-food" class="btn btn-primary" (click) = "outputFood()">Add to food log</button>
                   </form>
                 </div>

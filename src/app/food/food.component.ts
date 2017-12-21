@@ -1,6 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { NgxTypeaheadModule } from 'ngx-typeahead';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+
 declare var jquery:any;
 declare var $ :any;
+
+@NgModule({
+  declarations: [  ]
+})
 
 @Component({
   selector: 'app-food',
@@ -24,6 +32,7 @@ export class FoodComponent implements OnInit {
         (<HTMLInputElement>document.getElementById("food")).value = "";
     }
   }
+
 
 
 }
